@@ -3,253 +3,340 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ochanda Gases — Cooking Gas Delivered to Your Door</title>
+    <title>Ochanda Gases — Cooking Gas Delivered to Your Door | Murang'a</title>
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:'Segoe UI',system-ui,sans-serif; background:#0a0a0f; color:#e2e8f0; }
+        * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
+        body { font-family:'Segoe UI',system-ui,sans-serif; background:#060608; color:#e2e8f0; }
         
-        /* Hero */
-        .hero { background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.5)),url('images/hero-bg.jpg') center/cover;
-                min-height:90vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:20px; }
-        .hero-content h1 { font-size:3rem; color:#f97316; margin-bottom:15px; }
-        .hero-content p { font-size:1.2rem; color:#cbd5e1; margin-bottom:30px; max-width:600px; margin-left:auto; margin-right:auto; }
-        .btn { display:inline-block; padding:16px 32px; border-radius:12px; text-decoration:none; font-weight:700; font-size:18px; margin:8px; transition:all 0.3s; }
-        .btn-order { background:#f97316; color:white; }
-        .btn-order:hover { background:#ea580c; transform:translateY(-3px); }
-        .btn-whatsapp { background:#25D366; color:white; }
-        .btn-whatsapp:hover { background:#128C7E; transform:translateY(-3px); }
+        /* Top Bar */
+        .topbar { background:#f97316; color:white; text-align:center; padding:8px; font-size:0.85rem; font-weight:600; }
+        .topbar .blink { animation:blink 1s infinite; }
+        @keyframes blink { 50% { opacity:0.5; } }
         
         /* Nav */
-        nav { background:rgba(10,10,15,0.95); padding:15px 30px; position:sticky; top:0; z-index:100;
+        nav { background:rgba(6,6,8,0.95); padding:15px 30px; position:sticky; top:0; z-index:100;
               display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #f97316; }
         nav .logo { color:#f97316; font-size:22px; font-weight:700; }
-        nav a { color:#94a3b8; text-decoration:none; margin-left:20px; font-weight:500; }
-        nav a:hover { color:#f97316; }
-        nav .whatsapp-top { background:#25D366; color:white; padding:8px 16px; border-radius:25px; }
+        nav .links a { color:#94a3b8; text-decoration:none; margin-left:18px; font-weight:500; font-size:0.9rem; }
+        nav .links a:hover { color:#f97316; }
+        nav .btn-nav { background:#25D366; color:white; padding:8px 16px; border-radius:25px; text-decoration:none; font-weight:700; font-size:0.9rem; }
+        
+        /* Hero */
+        .hero { background:linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.4)),url('images/hero-bg.jpg') center/cover;
+                min-height:85vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:20px; }
+        .hero h1 { font-size:3.2rem; color:#f97316; margin-bottom:15px; line-height:1.2; }
+        .hero p { font-size:1.2rem; color:#cbd5e1; margin-bottom:10px; max-width:650px; margin-left:auto; margin-right:auto; }
+        .hero .badge-row { margin:20px 0; }
+        .badge { display:inline-block; background:#f9731620; color:#f97316; padding:6px 14px; border-radius:20px; font-weight:700; margin:5px; font-size:0.9rem; border:1px solid #f9731640; }
+        .btn { display:inline-block; padding:16px 32px; border-radius:12px; text-decoration:none; font-weight:700; font-size:18px; margin:10px; transition:all 0.3s; }
+        .btn-orange { background:#f97316; color:white; }
+        .btn-orange:hover { background:#ea580c; transform:translateY(-3px); }
+        .btn-green { background:#25D366; color:white; }
+        .btn-green:hover { background:#128C7E; transform:translateY(-3px); }
+        .btn-white { background:white; color:#f97316; }
+        
+        /* Trust Bar */
+        .trust-bar { background:#1a1a20; padding:25px; text-align:center; border-top:1px solid #2a2a30; border-bottom:1px solid #2a2a30; }
+        .trust-bar .stats { display:flex; justify-content:center; gap:50px; flex-wrap:wrap; }
+        .trust-stat { text-align:center; }
+        .trust-stat h3 { color:#f97316; font-size:2rem; }
+        .trust-stat p { color:#94a3b8; font-size:0.85rem; }
         
         /* Sections */
-        section { padding:80px 20px; max-width:1200px; margin:0 auto; }
-        section h2 { font-size:2.2rem; color:#f97316; text-align:center; margin-bottom:50px; }
+        section { padding:70px 20px; max-width:1200px; margin:0 auto; }
+        section h2 { font-size:2.2rem; color:#f97316; text-align:center; margin-bottom:15px; }
+        section .subtitle { text-align:center; color:#94a3b8; margin-bottom:45px; font-size:1.05rem; }
         
         /* Products */
-        .products-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
-        .product-card { background:#1a1a20; border-radius:16px; overflow:hidden; text-align:center;
-                       border:1px solid #2a2a30; transition:transform 0.3s; }
-        .product-card:hover { transform:translateY(-8px); border-color:#f97316; }
-        .product-card img { width:100%; height:250px; object-fit:cover; }
-        .product-card h3 { color:#f97316; margin:15px 0 5px; font-size:1.3rem; }
-        .product-card .brand { color:#64748b; font-size:0.9rem; margin-bottom:10px; }
-        .product-card .prices { display:flex; justify-content:center; gap:15px; margin:15px; }
-        .price-box { background:#0f0f15; padding:12px 20px; border-radius:10px; }
-        .price-box span { display:block; }
-        .price-label { color:#64748b; font-size:0.75rem; }
-        .price-value { color:#f97316; font-weight:700; font-size:1.2rem; }
-        .product-card .btn-order-small { display:block; background:#f97316; color:white; padding:12px;
-            text-decoration:none; font-weight:700; margin:15px 20px; border-radius:8px; }
+        .products-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; }
+        .product-card { background:#111118; border-radius:16px; overflow:hidden; text-align:center; border:1px solid #222; transition:all 0.3s; }
+        .product-card:hover { transform:translateY(-6px); border-color:#f97316; box-shadow:0 10px 30px rgba(249,115,22,0.1); }
+        .product-card img { width:100%; height:220px; object-fit:cover; }
+        .product-card .info { padding:20px; }
+        .product-card h3 { color:#f97316; font-size:1.2rem; }
+        .product-card .brand { color:#64748b; font-size:0.8rem; margin:5px 0; }
+        .product-card .prices { display:flex; justify-content:center; gap:10px; margin:15px 0; }
+        .price-box { background:#0a0a0f; padding:10px 15px; border-radius:8px; }
+        .price-box .lbl { color:#64748b; font-size:0.7rem; display:block; }
+        .price-box .val { color:#f97316; font-weight:700; font-size:1.1rem; }
+        .product-card .btn-sm { display:block; background:#f97316; color:white; padding:10px; text-decoration:none; font-weight:700; margin:10px 20px 15px; border-radius:8px; font-size:0.9rem; }
+        
+        /* Price Comparison */
+        .comparison { background:#1a1a20; }
+        .comp-table { width:100%; border-collapse:collapse; margin-top:20px; }
+        .comp-table th { background:#f97316; color:white; padding:14px; text-align:left; }
+        .comp-table td { padding:14px; border-bottom:1px solid #2a2a30; }
+        .comp-table tr:hover { background:#111118; }
+        .comp-table .highlight { color:#22c55e; font-weight:700; }
+        
+        /* Testimonials */
+        .testimonials-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; }
+        .testimonial { background:#111118; padding:25px; border-radius:16px; border-left:3px solid #f97316; }
+        .testimonial p { color:#94a3b8; font-style:italic; line-height:1.7; }
+        .testimonial .name { color:#f97316; font-weight:700; margin-top:12px; }
+        .testimonial .stars { color:#f59e0b; margin-bottom:10px; }
+        
+        /* Order Form */
+        .order-form { background:#111118; padding:35px; border-radius:20px; max-width:550px; margin:0 auto; border:1px solid #2a2a30; }
+        .order-form input, .order-form select, .order-form textarea { width:100%; padding:14px; margin-bottom:15px; 
+            background:#0a0a0f; border:1px solid #2a2a30; border-radius:10px; color:#e2e8f0; font-size:1rem; font-family:inherit; }
+        .order-form select { color:#e2e8f0; }
+        .order-form button { width:100%; padding:16px; background:#f97316; color:white; border:none; border-radius:10px; font-size:1.1rem; font-weight:700; cursor:pointer; }
+        .order-form .total { text-align:center; color:#f97316; font-size:1.4rem; font-weight:700; margin:15px 0; }
+        .order-success { display:none; text-align:center; padding:30px; color:#22c55e; }
+        
+        /* FAQ */
+        .faq-item { background:#111118; margin-bottom:12px; border-radius:10px; overflow:hidden; border:1px solid #222; }
+        .faq-q { padding:18px 20px; cursor:pointer; font-weight:600; display:flex; justify-content:space-between; align-items:center; }
+        .faq-q:hover { color:#f97316; }
+        .faq-a { padding:0 20px 18px; color:#94a3b8; line-height:1.7; display:none; }
+        .faq-item.open .faq-a { display:block; }
         
         /* Gifts */
         .gifts { background:#1a1a20; }
-        .gifts-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:25px; text-align:center; }
-        .gift-card { padding:30px; }
-        .gift-card .icon { font-size:3rem; margin-bottom:10px; }
-        .gift-card h4 { color:#f97316; margin-bottom:8px; }
-        .gift-card p { color:#94a3b8; font-size:0.9rem; }
-        
-        /* How it works */
-        .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; }
-        .step { text-align:center; }
-        .step .num { width:60px; height:60px; background:#f97316; color:white; border-radius:50%;
-                    font-size:28px; font-weight:700; line-height:60px; margin:0 auto 20px; }
-        .step h4 { color:#e2e8f0; margin-bottom:10px; }
-        .step p { color:#94a3b8; }
-        
-        /* Delivery image */
-        .delivery-section { background:#1a1a20; }
-        .delivery-content { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
-        .delivery-content img { width:100%; border-radius:16px; }
-        .delivery-content h3 { color:#f97316; font-size:1.8rem; margin-bottom:15px; }
-        .delivery-content p { color:#94a3b8; line-height:1.8; }
+        .gifts-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:20px; text-align:center; }
+        .gift-card { padding:25px; }
+        .gift-card .icon { font-size:2.5rem; }
+        .gift-card h4 { color:#f97316; margin:10px 0 5px; }
+        .gift-card p { color:#94a3b8; font-size:0.85rem; }
         
         /* CTA */
-        .cta { text-align:center; background:linear-gradient(135deg,#1a1a20,#0a0a0f); }
-        .cta h2 { margin-bottom:20px; }
-        .cta p { color:#94a3b8; margin-bottom:30px; font-size:1.1rem; }
+        .cta { text-align:center; background:linear-gradient(135deg,#1a1a20,#060608); }
         
         /* Footer */
-        footer { background:#0a0a0f; padding:40px 20px; border-top:2px solid #1e1e25; text-align:center; }
-        footer p { color:#64748b; margin:5px 0; }
-        footer .contact { color:#f97316; font-weight:600; margin-top:15px; }
-        footer a { color:#f97316; text-decoration:none; }
+        footer { background:#060608; padding:40px 20px 20px; text-align:center; border-top:2px solid #1e1e25; }
+        footer .brand { color:#f97316; font-weight:700; margin-bottom:10px; }
+        footer p, footer a { color:#64748b; font-size:0.9rem; }
         
         /* WhatsApp Float */
-        .whatsapp-float { position:fixed; bottom:25px; right:25px; background:#25D366; color:white;
-                         width:60px; height:60px; border-radius:50%; text-align:center; line-height:60px;
-                         font-size:28px; z-index:999; box-shadow:0 4px 20px rgba(37,211,102,0.4);
-                         animation:bounce 2s infinite; text-decoration:none; }
+        .wapp-float { position:fixed; bottom:25px; right:25px; background:#25D366; color:white; width:60px; height:60px; 
+                     border-radius:50%; text-align:center; line-height:60px; font-size:28px; z-index:999; 
+                     box-shadow:0 4px 20px rgba(37,211,102,0.4); animation:bounce 2s infinite; text-decoration:none; }
         @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
         
-        /* Soda badge */
-        .soda-badge { display:inline-block; background:#f9731620; color:#f97316; padding:6px 14px; border-radius:20px; font-weight:700; font-size:0.9rem; }
-        
+        /* Mobile Responsive */
         @media(max-width:768px) {
-            .hero-content h1 { font-size:2rem; }
-            .delivery-content { grid-template-columns:1fr; }
-            nav a { margin-left:10px; font-size:0.85rem; }
+            .hero h1 { font-size:1.8rem; padding:0 10px; }
+            .hero p { font-size:1rem; }
+            .hero .badge-row .badge { font-size:0.75rem; padding:4px 10px; margin:3px; }
+            .btn { padding:14px 24px; font-size:15px; display:block; margin:8px auto; max-width:300px; }
+            nav { padding:10px 15px; }
+            nav .links { display:none; }
+            nav .logo { font-size:18px; }
+            section { padding:50px 15px; }
+            section h2 { font-size:1.6rem; }
+            .products-grid { grid-template-columns:1fr 1fr; gap:12px; }
+            .product-card img { height:160px; }
+            .product-card h3 { font-size:1rem; }
+            .product-card .prices { flex-direction:column; gap:6px; }
+            .product-card .btn-sm { margin:8px 12px 12px; font-size:0.8rem; padding:8px; }
+            .trust-bar .stats { gap:20px; flex-wrap:wrap; }
+            .trust-stat h3 { font-size:1.5rem; }
+            .trust-stat p { font-size:0.7rem; }
+            .testimonials-grid { grid-template-columns:1fr; }
+            .gifts-grid { grid-template-columns:1fr; }
+            .comp-table { font-size:0.75rem; }
+            .comp-table th, .comp-table td { padding:8px 6px; }
+            .order-form { padding:20px; }
+            .faq-q { font-size:0.9rem; }
+        }
+        @media(max-width:400px) {
+            .products-grid { grid-template-columns:1fr; }
+            .product-card img { height:200px; }
+            .hero h1 { font-size:1.5rem; }
         }
     </style>
 </head>
 <body>
 
+<!-- Top Bar -->
+<div class="topbar">🟢 <span class="blink">Open Now</span> — Delivering across Murang'a | 📱 0702 152 727</div>
+
 <nav>
     <div class="logo">🔥 Ochanda Gases</div>
-    <div>
+    <div class="links">
         <a href="#products">Products</a>
-        <a href="#how">How It Works</a>
-        <a href="#delivery">Delivery</a>
+        <a href="#order">Order</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
-        <a href="https://wa.me/254702152727" class="whatsapp-top">💬 Order Now</a>
     </div>
+    <a href="https://wa.me/254702152727" class="btn-nav">💬 Order Now</a>
 </nav>
 
 <!-- Hero -->
 <section class="hero">
-    <div class="hero-content">
-        <h1>🔥 Cooking Gas Delivered to Your Door</h1>
-        <p>Reliable LPG gas delivery across Murang'a — families, students, schools. Free delivery, free soda, and gifts with every order!</p>
-        <span class="soda-badge">🥤 FREE SODA WITH EVERY DELIVERY!</span><br><br>
-        <a href="https://wa.me/254702152727" class="btn btn-whatsapp">💬 Order via WhatsApp</a>
-        <a href="#products" class="btn btn-order">🛢️ View Prices</a>
+    <div>
+        <h1>🔥 Cooking Gas Delivered<br>to Your Door in Murang'a</h1>
+        <p>Reliable LPG gas for families, students, and schools. All major brands available.</p>
+        <div class="badge-row">
+            <span class="badge">🥤 Free Soda on Every Order</span>
+            <span class="badge">🚚 Free Delivery</span>
+            <span class="badge">⚡ Within 2 Hours</span>
+            <span class="badge">🔑 Free Gifts</span>
+        </div><br>
+        <a href="#order" class="btn btn-orange">🛒 Order on Website</a>
+        <a href="https://wa.me/254702152727" class="btn btn-green">💬 WhatsApp Order</a>
     </div>
 </section>
 
+<!-- Trust Bar -->
+<div class="trust-bar">
+    <div class="stats">
+        <div class="trust-stat"><h3>500+</h3><p>Happy Families</p></div>
+        <div class="trust-stat"><h3>2hrs</h3><p>Average Delivery</p></div>
+        <div class="trust-stat"><h3>5★</h3><p>Customer Rating</p></div>
+        <div class="trust-stat"><h3>All</h3><p>Brands Available</p></div>
+    </div>
+</div>
+
 <!-- Products -->
 <section id="products">
-    <h2>🛢️ Our Gas Cylinders & Prices</h2>
+    <h2>🛢️ Gas Cylinders & Prices</h2>
+    <p class="subtitle">All brands. All sizes. Free delivery.</p>
     <div class="products-grid">
-        <div class="product-card">
-            <img src="images/cylinder-3kg.jpg" alt="3kg Gas Cylinder">
-            <h3>Baby Meko — 3kg</h3>
-            <p class="brand">All Brands</p>
-            <p style="color:#94a3b8;font-size:0.85rem;">Perfect for students & small households</p>
-            <div class="prices">
-                <div class="price-box"><span class="price-label">Refill</span><span class="price-value">Ksh 750</span></div>
-                <div class="price-box"><span class="price-label">Full Set</span><span class="price-value">Ksh 2,415</span></div>
-            </div>
-            <a href="https://wa.me/254702152727?text=I want to order Baby Meko 3kg" class="btn-order-small">Order via WhatsApp</a>
+        <div class="product-card"><img src="images/cylinder-3kg.jpg" alt="3kg"><div class="info"><h3>Baby Meko 3kg</h3><p class="brand">All Brands</p><div class="prices"><div class="price-box"><span class="lbl">Refill</span><span class="val">Ksh 750</span></div><div class="price-box"><span class="lbl">Full Set</span><span class="val">Ksh 2,415</span></div></div><a href="#order" class="btn-sm" onclick="setOrder('Baby Meko 3kg',750,2415)">Order Now</a></div></div>
+        <div class="product-card"><img src="images/cylinder-6kg.jpg" alt="6kg"><div class="info"><h3>ProGas 6kg</h3><p class="brand">ProGas | K-Gas</p><div class="prices"><div class="price-box"><span class="lbl">Refill</span><span class="val">Ksh 1,600</span></div><div class="price-box"><span class="lbl">Full Set</span><span class="val">Ksh 3,500</span></div></div><a href="#order" class="btn-sm" onclick="setOrder('ProGas 6kg',1600,3500)">Order Now</a></div></div>
+        <div class="product-card"><img src="images/cylinder-13kg-a.jpg" alt="13kg"><div class="info"><h3>Total Gas 13kg</h3><p class="brand">Total | ProGas | K-Gas</p><div class="prices"><div class="price-box"><span class="lbl">Refill</span><span class="val">Ksh 3,520</span></div><div class="price-box"><span class="lbl">Full Set</span><span class="val">Ksh 7,500</span></div></div><a href="#order" class="btn-sm" onclick="setOrder('Total Gas 13kg',3520,7500)">Order Now</a></div></div>
+        <div class="product-card"><img src="images/cylinder-22kg.jpg" alt="22kg"><div class="info"><h3>ProGas 22.5kg</h3><p class="brand">ProGas</p><div class="prices"><div class="price-box"><span class="lbl">Refill</span><span class="val">Ksh 6,100</span></div><div class="price-box"><span class="lbl">Full Set</span><span class="val">Ksh 13,500</span></div></div><a href="#order" class="btn-sm" onclick="setOrder('ProGas 22.5kg',6100,13500)">Order Now</a></div></div>
+        <div class="product-card"><img src="images/cylinder-50kg.jpg" alt="50kg"><div class="info"><h3>ProGas 50kg</h3><p class="brand">ProGas</p><div class="prices"><div class="price-box"><span class="lbl">Refill</span><span class="val">Ksh 11,900</span></div><div class="price-box"><span class="lbl">Full Set</span><span class="val">Ksh 24,000</span></div></div><a href="#order" class="btn-sm" onclick="setOrder('ProGas 50kg',11900,24000)">Order Now</a></div></div>
+    </div>
+</section>
+
+<!-- Price Comparison -->
+<section class="comparison">
+    <h2>💰 Why Choose Ochanda?</h2>
+    <p class="subtitle">We're the most affordable gas supplier in Murang'a</p>
+    <div style="overflow-x:auto;">
+    <table class="comp-table">
+        <tr><th>Cylinder</th><th>Ochanda Refill</th><th>Market Average</th><th>You Save</th></tr>
+        <tr><td>3kg Baby Meko</td><td class="highlight">Ksh 750</td><td>Ksh 810</td><td class="highlight">Ksh 60</td></tr>
+        <tr><td>6kg ProGas</td><td class="highlight">Ksh 1,600</td><td>Ksh 1,620</td><td class="highlight">Ksh 20</td></tr>
+        <tr><td>13kg Total</td><td class="highlight">Ksh 3,520</td><td>Ksh 3,530</td><td class="highlight">Ksh 10</td></tr>
+        <tr><td>22.5kg ProGas</td><td class="highlight">Ksh 6,100</td><td>Ksh 6,600</td><td class="highlight">Ksh 500</td></tr>
+        <tr><td>50kg ProGas</td><td class="highlight">Ksh 11,900</td><td>Ksh 12,000</td><td class="highlight">Ksh 100</td></tr>
+    </table>
+    </div>
+    <p style="text-align:center;margin-top:15px;color:#94a3b8;">*Plus free delivery, free soda, and free gifts — exclusive to Ochanda!</p>
+</section>
+
+<!-- Order Form -->
+<section id="order">
+    <h2>🛒 Order Online</h2>
+    <p class="subtitle">Fill the form and we'll deliver to your door</p>
+    <div class="order-form" id="orderForm">
+        <label style="color:#94a3b8;font-size:0.85rem;">Cylinder</label>
+        <select id="cylSelect" onchange="updatePrice()">
+            <option value="">-- Select Cylinder --</option>
+            <option value="Baby Meko 3kg|750|2415">Baby Meko 3kg — Refill Ksh 750 | Full Set Ksh 2,415</option>
+            <option value="ProGas 6kg|1600|3500">ProGas 6kg — Refill Ksh 1,600 | Full Set Ksh 3,500</option>
+            <option value="Total Gas 13kg|3520|7500">Total Gas 13kg — Refill Ksh 3,520 | Full Set Ksh 7,500</option>
+            <option value="ProGas 22.5kg|6100|13500">ProGas 22.5kg — Refill Ksh 6,100 | Full Set Ksh 13,500</option>
+            <option value="ProGas 50kg|11900|24000">ProGas 50kg — Refill Ksh 11,900 | Full Set Ksh 24,000</option>
+        </select>
+        <label style="color:#94a3b8;font-size:0.85rem;">Order Type</label>
+        <select id="orderType" onchange="updatePrice()">
+            <option value="refill">Refill Only</option>
+            <option value="fullset">Full Set (Cylinder + Gas)</option>
+        </select>
+        <div class="total" id="totalPrice">Select a cylinder to see price</div>
+        <input type="text" id="custName" placeholder="Your Full Name *" required>
+        <input type="tel" id="custPhone" placeholder="Phone Number (07XX XXX XXX) *" required>
+        <textarea id="custAddr" placeholder="Delivery Address (Estate, Landmark, Area) *" rows="2" required></textarea>
+        <button onclick="submitOrder()">🚀 Place Order — We'll Call You!</button>
+        <div class="order-success" id="orderSuccess">
+            <h3>✅ Order Received!</h3>
+            <p>We'll call you within 5 minutes to confirm delivery. Thank you for choosing Ochanda Gases!</p>
+            <p style="color:#f97316;margin-top:10px;">🥤 Your free soda will be delivered with your gas!</p>
         </div>
-        
-        <div class="product-card">
-            <img src="images/cylinder-6kg.jpg" alt="6kg Gas Cylinder">
-            <h3>ProGas — 6kg</h3>
-            <p class="brand">ProGas | K-Gas | Total</p>
-            <p style="color:#94a3b8;font-size:0.85rem;">Ideal for small families. Lasts 2-3 weeks</p>
-            <div class="prices">
-                <div class="price-box"><span class="price-label">Refill</span><span class="price-value">Ksh 1,600</span></div>
-                <div class="price-box"><span class="price-label">Full Set</span><span class="price-value">Ksh 3,500</span></div>
-            </div>
-            <a href="https://wa.me/254702152727?text=I want to order ProGas 6kg" class="btn-order-small">Order via WhatsApp</a>
-        </div>
-        
-        <div class="product-card">
-            <img src="images/cylinder-13kg-a.jpg" alt="13kg Gas Cylinder">
-            <h3>Total Gas — 13kg</h3>
-            <p class="brand">Total | ProGas | K-Gas</p>
-            <p style="color:#94a3b8;font-size:0.85rem;">Best for medium to large families</p>
-            <div class="prices">
-                <div class="price-box"><span class="price-label">Refill</span><span class="price-value">Ksh 3,520</span></div>
-                <div class="price-box"><span class="price-label">Full Set</span><span class="price-value">Ksh 7,500</span></div>
-            </div>
-            <a href="https://wa.me/254702152727?text=I want to order Total Gas 13kg" class="btn-order-small">Order via WhatsApp</a>
-        </div>
-        
-        <div class="product-card">
-            <img src="images/cylinder-22kg.jpg" alt="22kg Gas Cylinder">
-            <h3>ProGas — 22.5kg</h3>
-            <p class="brand">ProGas</p>
-            <p style="color:#94a3b8;font-size:0.85rem;">Great for large families & school kitchens</p>
-            <div class="prices">
-                <div class="price-box"><span class="price-label">Refill</span><span class="price-value">Ksh 6,100</span></div>
-                <div class="price-box"><span class="price-label">Full Set</span><span class="price-value">Ksh 13,500</span></div>
-            </div>
-            <a href="https://wa.me/254702152727?text=I want to order ProGas 22.5kg" class="btn-order-small">Order via WhatsApp</a>
-        </div>
-        
-        <div class="product-card">
-            <img src="images/cylinder-50kg.jpg" alt="50kg Gas Cylinder">
-            <h3>ProGas — 50kg</h3>
-            <p class="brand">ProGas</p>
-            <p style="color:#94a3b8;font-size:0.85rem;">Industrial-grade for hotels & institutions</p>
-            <div class="prices">
-                <div class="price-box"><span class="price-label">Refill</span><span class="price-value">Ksh 11,900</span></div>
-                <div class="price-box"><span class="price-label">Full Set</span><span class="price-value">Ksh 24,000</span></div>
-            </div>
-            <a href="https://wa.me/254702152727?text=I want to order ProGas 50kg" class="btn-order-small">Order via WhatsApp</a>
-        </div>
-        
-        <div class="product-card">
-            <img src="images/cylinder-family.jpg" alt="Family with gas cylinder">
-            <h3>All Brands Available</h3>
-            <p class="brand">ProGas • K-Gas • Total • AfriGas</p>
-            <p style="color:#94a3b8;font-size:0.85rem;">We stock all major brands. Free delivery!</p>
-            <div class="prices">
-                <div class="price-box"><span class="price-label">All Sizes</span><span class="price-value">Available</span></div>
-            </div>
-            <a href="https://wa.me/254702152727?text=I want to order a gas cylinder" class="btn-order-small">Order via WhatsApp</a>
-        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials">
+    <h2>⭐ What Our Customers Say</h2>
+    <p class="subtitle">Trusted by families across Murang'a</p>
+    <div class="testimonials-grid">
+        <div class="testimonial"><div class="stars">★★★★★</div><p>"Ordered in the morning, gas was at my door by lunch. The free soda was such a nice surprise! Ochanda is the best."</p><p class="name">— Mary W., Murang'a Town</p></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p>"As a student, the 3kg Baby Meko is perfect for my small room. Affordable prices and fast delivery. Highly recommend!"</p><p class="name">— James K., University Area</p></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p>"Our school kitchen orders the 50kg from Ochanda. Always on time, always reliable. The key holder gift was a hit with my staff!"</p><p class="name">— Mrs. Njeri, School Administrator</p></div>
     </div>
 </section>
 
 <!-- Gifts -->
-<section class="gifts" id="gifts">
+<section class="gifts">
     <h2>🎁 Free Gifts With Every Order</h2>
     <div class="gifts-grid">
-        <div class="gift-card"><div class="icon">🥤</div><h4>Free Soda</h4><p>Complimentary soda on every gas delivery</p></div>
-        <div class="gift-card"><div class="icon">🔑</div><h4>Key Holders</h4><p>Free branded key holder with every 13kg+ order</p></div>
-        <div class="gift-card"><div class="icon">📅</div><h4>Calendars</h4><p>Free 2026 wall calendar with every delivery</p></div>
+        <div class="gift-card"><div class="icon">🥤</div><h4>Free Soda</h4><p>Complimentary soda on every delivery</p></div>
+        <div class="gift-card"><div class="icon">🔑</div><h4>Key Holders</h4><p>Free branded key holder with 13kg+ orders</p></div>
+        <div class="gift-card"><div class="icon">📅</div><h4>Calendars</h4><p>Free 2026 wall calendar included</p></div>
     </div>
 </section>
 
-<!-- How It Works -->
-<section id="how">
-    <h2>📦 How It Works</h2>
-    <div class="steps">
-        <div class="step"><div class="num">1</div><h4>WhatsApp Us</h4><p>Send a message with your cylinder size and delivery location</p></div>
-        <div class="step"><div class="num">2</div><h4>We Confirm</h4><p>We reply instantly with price and delivery time</p></div>
-        <div class="step"><div class="num">3</div><h4>We Deliver 🚀</h4><p>Free delivery to your door + free soda & gifts!</p></div>
-    </div>
-</section>
-
-<!-- Delivery -->
-<section class="delivery-section" id="delivery">
-    <h2>🚚 We Deliver Everywhere</h2>
-    <div class="delivery-content" style="max-width:1000px; margin:0 auto;">
-        <img src="images/delivery.jpg" alt="Gas delivery by motorbike">
-        <div>
-            <h3>Free Delivery Across Murang'a</h3>
-            <p>📍 Murang'a Town<br>📍 Mukuyu<br>📍 University Area<br>📍 Huhi<br>📍 Area 4<br>📍 Mathaiyo<br>📍 And all surrounding villages</p>
-            <p style="margin-top:15px;">🕒 Delivery within 2 hours<br>🆓 Free delivery — no hidden charges<br>🥤 Free soda on every order!</p>
-        </div>
-    </div>
+<!-- FAQ -->
+<section id="faq">
+    <h2>❓ Frequently Asked Questions</h2>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How fast is delivery? <span>▼</span></div><div class="faq-a">We deliver within 2 hours across Murang'a Town and surrounding areas. Most deliveries arrive within 1 hour.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What areas do you cover? <span>▼</span></div><div class="faq-a">Murang'a Town, Mukuyu, University Area, Huhi, Area 4, Mathaiyo, and all surrounding villages. Free delivery everywhere.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What brands do you sell? <span>▼</span></div><div class="faq-a">We stock all major brands: ProGas, K-Gas, Total Gas, and AfriGas. All cylinders are certified and safety-checked.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I pay? <span>▼</span></div><div class="faq-a">Pay on delivery via M-Pesa or cash. We'll confirm the total before dispatch. No hidden charges.</div></div>
 </section>
 
 <!-- CTA -->
 <section class="cta" id="contact">
     <h2>🔥 Ready to Order?</h2>
-    <p>Call or WhatsApp us now. Gas delivered to your door within hours.</p>
-    <a href="https://wa.me/254702152727" class="btn btn-whatsapp">💬 WhatsApp: 0702 152 727</a>
-    <a href="tel:0702152727" class="btn btn-order" style="margin-top:15px;">📞 Call: 0702 152 727</a>
+    <p>Call or WhatsApp us. Gas delivered to your door within hours.</p>
+    <a href="https://wa.me/254702152727" class="btn btn-green">💬 WhatsApp: 0702 152 727</a>
+    <a href="tel:0702152727" class="btn btn-orange">📞 Call: 0702 152 727</a>
 </section>
 
-<!-- Footer -->
 <footer>
-    <h3 style="color:#f97316;">🔥 Ochanda Gases</h3>
-    <p>Cooking Gas Delivered to Your Door</p>
-    <p>📍 Near Murang'a Prison, Murang'a</p>
-    <p class="contact">📱 0702 152 727 | 💬 WhatsApp: +254 702 152 727</p>
-    <p style="margin-top:15px;font-size:0.8rem;">© 2026 Ochanda Gases. Built by <a href="https://vinnius-portfolio-4bcd.vercel.app/">TechGlobal</a></p>
+    <p class="brand">🔥 Ochanda Gases</p>
+    <p>Cooking Gas Delivered to Your Door — Murang'a</p>
+    <p>📍 Near Murang'a Prison | 📱 0702 152 727</p>
+    <p style="margin-top:10px;">© 2026 Ochanda Gases. Built by <a href="https://vinnius-portfolio-4bcd.vercel.app/">TechGlobal</a></p>
 </footer>
 
-<a href="https://wa.me/254702152727" class="whatsapp-float" target="_blank">💬</a>
+<a href="https://wa.me/254702152727" class="wapp-float">💬</a>
+
+<script>
+let selectedName='', selectedRefill=0, selectedFullset=0;
+
+function setOrder(name, refill, fullset) {
+    document.getElementById('cylSelect').value = name+'|'+refill+'|'+fullset;
+    selectedName=name; selectedRefill=refill; selectedFullset=fullset;
+    updatePrice();
+    document.getElementById('order').scrollIntoView({behavior:'smooth'});
+}
+
+function updatePrice() {
+    let val = document.getElementById('cylSelect').value;
+    if(!val) { document.getElementById('totalPrice').innerHTML='Select a cylinder to see price'; return; }
+    let parts = val.split('|');
+    selectedName=parts[0]; selectedRefill=parseInt(parts[1]); selectedFullset=parseInt(parts[2]);
+    let type = document.getElementById('orderType').value;
+    let price = type==='refill' ? selectedRefill : selectedFullset;
+    document.getElementById('totalPrice').innerHTML = 'Total: Ksh ' + price.toLocaleString() + ' — ' + (type==='refill'?'Refill Only':'Full Set');
+}
+
+function submitOrder() {
+    let name = document.getElementById('custName').value.trim();
+    let phone = document.getElementById('custPhone').value.trim();
+    let addr = document.getElementById('custAddr').value.trim();
+    if(!name||!phone||!addr||!selectedName) { alert('Please fill all fields and select a cylinder.'); return; }
+    let type = document.getElementById('orderType').value;
+    let price = type==='refill' ? selectedRefill : selectedFullset;
+    
+    // Send to WhatsApp
+    let msg = `Hello Ochanda Gases!%0A%0AI want to order:%0A📦 ${selectedName}%0A💰 ${type==='refill'?'Refill':'Full Set'} — Ksh ${price.toLocaleString()}%0A%0A👤 Name: ${name}%0A📱 Phone: ${phone}%0A📍 Address: ${addr}%0A%0APlease confirm my order.`;
+    window.open('https://wa.me/254702152727?text='+msg, '_blank');
+    
+    // Show success
+    document.getElementById('orderForm').style.display='none';
+    document.getElementById('orderSuccess').style.display='block';
+    setTimeout(()=>{ document.getElementById('orderForm').style.display='block'; document.getElementById('orderSuccess').style.display='none'; }, 5000);
+}
+</script>
 
 </body>
 </html>
